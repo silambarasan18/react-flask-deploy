@@ -23,10 +23,10 @@ services:
     container_name: frontend
     volumes:
       - ./sys-stats:/usr/frontend
-    networks:
-      smartcow_network:
-        aliases:
-          - frontend
+    # networks:
+    #   smartcow_network:
+    #     aliases:
+    #       - frontend
     ports:
       - "3000:3000"
 
