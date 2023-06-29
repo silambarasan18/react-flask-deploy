@@ -17,20 +17,25 @@ services:
       - frontend
   
   frontend:
+    image: silambu18/frontend
     build:
       context: ./sys-stats/
       dockerfile: Dockerfile
     container_name: frontend
+    command: ./entrypoint.sh
     volumes:
       - ./sys-stats:/usr/frontend
     networks:
       smartcow_network:
         aliases:
           - frontend
+    # expose:
+    #   - 3000
     ports:
       - "3000:3000"
 
   api:
+    image: silambu18/api
     build:
       context: ./api/
       dockerfile: Dockerfile
@@ -38,8 +43,8 @@ services:
     command: ./entrypoint.sh
     volumes:
       - ./api:/var/www/api
-    ports:
-      - "5000:5000"
+    expose:
+      - 5000
     networks:
       smartcow_network:
         aliases:

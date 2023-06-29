@@ -5,4 +5,5 @@ WORKDIR /usr/frontend
 COPY package*.json ./
 RUN npm install
 COPY ./ ./
-ENTRYPOINT [ "sh", "entrypoint.sh" ]
+COPY entrypoint.sh ./
+# ENTRYPOINT [ "sh", "entrypoint.sh" ]
