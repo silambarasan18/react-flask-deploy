@@ -1,36 +1,20 @@
 version: '3.8'
 
 services:
-  # nginx:
-  #   image: nginx:1.15
-  #   container_name: nginx
-  #   restart: unless-stopped
-  #   volumes:
-  #     - ./sys-stats/build:/var/www/frontend
-  #     - ./nginx/nginx_prod.conf:/etc/nginx/conf.d/default.conf
-  #   ports:
-  #     - 80:80
-  #   networks:
-  #     - smartcow_network
-  #   depends_on:
-  #     - api
-  #     - frontend
-  
+
   frontend:
     image: silambu18/frontend
     build:
       context: ./sys-stats/
       dockerfile: Dockerfile
     container_name: frontend
-
     ports:
       - "80:80"
     depends_on:
       - api
-      
 
   api:
-    image: silambu18/api                                   
+    image: silambu18/api
     build:
       context: ./api/
       dockerfile: Dockerfile
@@ -45,5 +29,22 @@ services:
     #     aliases:
     #       - api
 
-networks:
-  smartcow_network:
+  # nginx:
+  #   image: nginx:1.15
+  #   container_name: nginx
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ./:/var/www/frontend
+  #     - ./nginx/nginx_prod.conf:/etc/nginx/conf.d/default.conf
+  #   ports:
+  #     - 80:80
+  #   networks:
+  #     - smartcow_network
+  #   depends_on:
+  #     - api
+  #     - frontend
+
+# networks:
+#   smartcow_network:
+
+

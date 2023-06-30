@@ -20,7 +20,7 @@ class App extends Component {
 
   async loadData() {
     try {
-      const res = await fetch('/stats');
+      const res = await fetch('/stats');  
       const blocks = await res.json();
       const ram = blocks.ram;
       const cpu = blocks.cpu;
