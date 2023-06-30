@@ -25,7 +25,7 @@ class App extends Component {
       const ram = blocks.ram;
       const cpu = blocks.cpu;
       console.log(ram);
-      this.setState({
+      this.setState({ 
         cpu, ram
       })
     } catch (e) {

@@ -1,4 +1,5 @@
 FROM python:3-slim
+
 ENV container_home=/var/www
 WORKDIR $container_home/api
 ADD requirements.txt $container_home/
