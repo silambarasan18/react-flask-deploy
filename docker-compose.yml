@@ -17,18 +17,12 @@ services:
   #     - frontend
   
   frontend:
-    image: frontend
+    image: silambu18/frontend
     build:
       context: ./sys-stats/
       dockerfile: Dockerfile
     container_name: frontend
-    # volumes:
-    #   - ./sys-stats/build:/var/www/frontend
-      # - ./nginx/nginx_prod.conf:/etc/nginx/conf.d/default.conf
-    # networks:
-    #   smartcow_network:
-    #     aliases:
-    #       - frontend
+
     ports:
       - "80:80"
     depends_on:
@@ -36,7 +30,7 @@ services:
       
 
   api:
-    image: api                                   
+    image: silambu18/api                                   
     build:
       context: ./api/
       dockerfile: Dockerfile

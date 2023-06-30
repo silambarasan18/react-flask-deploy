@@ -1,26 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: react-deployment
-  # namespace: reactapp
+  name: react
   labels:
-    app: react-app
+    app: react
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: react-app
+      app: react
   template:
     metadata:
       labels:
-        app: react-app
+        app: react
     spec:
       containers:
-        - name: react-app
+        - name: react
           image: silambu18/frontend:latest
-          imagePullPolicy: Never
           ports:
-            - containerPort: 3000
+            - containerPort: 80
 
 ---
 
@@ -30,12 +28,13 @@ metadata:
   name: react-service
   # namespace: reactapp
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
-    app: react-app
+    app: react
   ports:
     - protocol: TCP
-      port: 3000
-      targetPort: 3000
+      port: 80
+      targetPort: 80
+      nodePort: 30200
 
   
